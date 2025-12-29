@@ -1,6 +1,4 @@
-var HanziLookup = HanziLookup || {};
-
-HanziLookup.decodeCompact = (function (base64) {
+export default function decodeCompact(base64) {
   "use strict";
 
   var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
@@ -38,4 +36,4 @@ HanziLookup.decodeCompact = (function (base64) {
 
   return bytes;
 
-});
+}

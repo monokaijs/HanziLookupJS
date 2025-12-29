@@ -1,10 +1,6 @@
-/// <reference path="analyzedCharacter.js" />
-
-var HanziLookup = HanziLookup || {};
-
-HanziLookup.MatchCollector = (function (limit) {
+export default function MatchCollector(limit) {
   "use strict";
-  
+
   var _count = 0;
   var _matches = [];
 
@@ -60,7 +56,7 @@ HanziLookup.MatchCollector = (function (limit) {
   }
 
   return {
-    fileMatch: function(match) { doFileMatch(match); },
-    getMatches: function() { return doGetMatches(); }
+    fileMatch: function (match) { doFileMatch(match); },
+    getMatches: function () { return doGetMatches(); }
   };
-});
+}

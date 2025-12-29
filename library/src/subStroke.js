@@ -1,10 +1,8 @@
-var HanziLookup = HanziLookup || {};
-
-HanziLookup.SubStroke = (function(direction, length, centerX, centerY) {
-  "use strict";
-  
-  this.direction = direction;
-  this.length = length;
-  this.centerX = centerX;
-  this.centerY = centerY;
-});
+export default class SubStroke {
+  constructor(direction, length, centerX, centerY) {
+    this.direction = direction;
+    this.length = length;
+    this.centerX = centerX;
+    this.centerY = centerY;
+  }
+}

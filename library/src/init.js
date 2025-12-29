@@ -1,8 +1,7 @@
-var HanziLookup = HanziLookup || {};
+import decodeCompact from './decodeCompact';
+import { data } from './dataStore';
 
-HanziLookup.data = {};
-
-HanziLookup.init = (function (dataName, url, ready) {
+export function init(dataName, url, ready) {
   "use strict";
 
   var xhr = new XMLHttpRequest();
@@ -18,7 +17,7 @@ HanziLookup.init = (function (dataName, url, ready) {
   xhr.send();
 
   function dataReceived(dataName, responseText) {
-    HanziLookup.data[dataName] = JSON.parse(responseText);
-    HanziLookup.data[dataName].substrokes = HanziLookup.decodeCompact(HanziLookup.data[dataName].substrokes);
+    data[dataName] = JSON.parse(responseText);
+    data[dataName].substrokes = decodeCompact(data[dataName].substrokes);
   }
-});
+}

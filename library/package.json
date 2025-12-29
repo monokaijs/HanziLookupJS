@@ -1,23 +1,27 @@
 {
-  "name": "hanzilookupjs",
-  "version": "1.0.0",
-  "description": "Hanzi handwriting recognition derived from HanziLookup and Makemeahanzi",
-  "main": "gulpfile.js",
+  "name": "hanzilookup-js",
+  "version": "1.0.1",
+  "description": "Hanzi handwriting recognition derived from HanziLookup and Makemeahanzi. Originally by Gabor L Ugray.",
+  "main": "dist/hanzilookup.cjs.js",
+  "module": "dist/hanzilookup.esm.js",
+  "browser": "dist/hanzilookup.min.js",
+  "types": "index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rollup -c",
+    "clean": "rm -rf dist",
+    "release": "npm run clean && npm run build && npm publish"
   },
-  "author": "Gabor L Ugray",
+  "author": "Edward Nguyen <monokaijs@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "del": "2.2.2",
-    "gulp": "3.9.1",
-    "gulp-bower": "0.0.13",
-    "gulp-minify-css": "1.2.4",
-    "gulp-concat": "2.6.0",
-    "gulp-config": "0.3.0",
-    "gulp-less": "3.1.0",
-    "gulp-plumber": "1.1.0",
-    "gulp-uglify": "2.0.0",
-    "gulp-html-to-json": "0.1.8"
+    "@babel/core": "^7.28.5",
+    "@babel/preset-env": "^7.28.5",
+    "@rollup/plugin-babel": "^6.1.0",
+    "@rollup/plugin-commonjs": "^29.0.0",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "rollup": "^4.54.0"
   }
 }

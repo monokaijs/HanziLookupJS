@@ -1,8 +1,6 @@
-var HanziLookup = HanziLookup || {};
-
-HanziLookup.CubicCurve2D = (function (x1, y1, ctrlx1, ctrly1, ctrlx2, ctrly2, x2, y2) {
+export default function CubicCurve2D(x1, y1, ctrlx1, ctrly1, ctrlx2, ctrly2, x2, y2) {
   "use strict";
-  
+
   var _x1 = x1;
   var _y1 = y1;
   var _ctrlX1 = ctrlx1;
@@ -37,47 +35,47 @@ HanziLookup.CubicCurve2D = (function (x1, y1, ctrlx1, ctrly1, ctrlx2, ctrly2, x2
     var b = getCubicBx();
     var c = getCubicCx();
     var d = _x1 - x;
-    var f = ((3.0 * c / a) - (b*b / (a*a))) / 3.0;
-    var g = ((2.0 * b*b*b / (a*a*a)) - (9.0 * b * c / (a*a)) + (27.0 * d / a)) / 27.0;
+    var f = ((3.0 * c / a) - (b * b / (a * a))) / 3.0;
+    var g = ((2.0 * b * b * b / (a * a * a)) - (9.0 * b * c / (a * a)) + (27.0 * d / a)) / 27.0;
     var h = (g * g / 4.0) + (f * f * f / 27.0);
     // There is only one real root
     if (h > 0) {
-        var u = 0 - g;
-        var r = (u / 2) + (Math.pow(h, 0.5));
-        var s6 = (Math.pow(r, 0.333333333333333333333333333));
-        var s8 = s6;
-        var t8 = (u / 2) - (Math.pow(h, 0.5));
-        var v7 = (Math.pow((0 - t8), 0.33333333333333333333));
-        var v8 = (v7);
-        var x3 = (s8 - v8) - (b / (3 * a));
-        solutions.push(x3);
+      var u = 0 - g;
+      var r = (u / 2) + (Math.pow(h, 0.5));
+      var s6 = (Math.pow(r, 0.333333333333333333333333333));
+      var s8 = s6;
+      var t8 = (u / 2) - (Math.pow(h, 0.5));
+      var v7 = (Math.pow((0 - t8), 0.33333333333333333333));
+      var v8 = (v7);
+      var x3 = (s8 - v8) - (b / (3 * a));
+      solutions.push(x3);
     }
     // All 3 roots are real and equal
     else if (f == 0.0 && g == 0.0 && h == 0.0) {
-        solutions.push(-Math.pow(d / a, 1.0 / 3.0));
+      solutions.push(-Math.pow(d / a, 1.0 / 3.0));
     }
     // All three roots are real (h <= 0)
     else {
-        var i = Math.sqrt((g * g / 4.0) - h);
-        var j = Math.pow(i, 1.0 / 3.0);
-        var k = Math.acos(-g / (2 * i));
-        var l = j * -1.0;
-        var m = Math.cos(k / 3.0);
-        var n = Math.sqrt(3.0) * Math.sin(k / 3.0);
-        var p = (b / (3.0 * a)) * -1.0;
-        solutions.push(2.0 * j * Math.cos(k / 3.0) - (b / (3.0 * a)));
-        solutions.push(l * (m + n) + p);
-        solutions.push(l * (m - n) + p);
+      var i = Math.sqrt((g * g / 4.0) - h);
+      var j = Math.pow(i, 1.0 / 3.0);
+      var k = Math.acos(-g / (2 * i));
+      var l = j * -1.0;
+      var m = Math.cos(k / 3.0);
+      var n = Math.sqrt(3.0) * Math.sin(k / 3.0);
+      var p = (b / (3.0 * a)) * -1.0;
+      solutions.push(2.0 * j * Math.cos(k / 3.0) - (b / (3.0 * a)));
+      solutions.push(l * (m + n) + p);
+      solutions.push(l * (m - n) + p);
     }
     return solutions;
   }
 
   return {
-    x1: function() { return _x1; },
+    x1: function () { return _x1; },
 
-    x2: function() { return _x2; },
+    x2: function () { return _x2; },
 
-    getYOnCurve: function(t) {
+    getYOnCurve: function (t) {
       var ay = getCubicAy();
       var by = getCubicBy();
       var cy = getCubicCy();
@@ -87,11 +85,11 @@ HanziLookup.CubicCurve2D = (function (x1, y1, ctrlx1, ctrly1, ctrlx2, ctrly2, x2
       return y;
     },
 
-    solveForX: function(x) {
+    solveForX: function (x) {
       return doSolveForX(x);
     },
 
-    getFirstSolutionForX: function(x) {
+    getFirstSolutionForX: function (x) {
       var solutions = doSolveForX(x);
       for (var i = 0; i != solutions.length; ++i) {
         var d = solutions[i];
@@ -104,4 +102,4 @@ HanziLookup.CubicCurve2D = (function (x1, y1, ctrlx1, ctrly1, ctrlx2, ctrly2, x2
       return NaN;
     }
   };
-});
+}

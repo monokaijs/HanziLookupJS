@@ -1,9 +1,7 @@
-var HanziLookup = HanziLookup || {};
-
-HanziLookup.CharacterMatch = (function (character, score) {
-  "use strict";
-  
-  this.character = character;
-  this.score = score;
-});
+export default class CharacterMatch {
+  constructor(character, score) {
+    this.character = character;
+    this.score = score;
+  }
+}
 
