@@ -1,13 +1,14 @@
 {
   "name": "hanzilookup-js",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Hanzi handwriting recognition derived from HanziLookup and Makemeahanzi. Originally by Gabor L Ugray.",
   "main": "dist/hanzilookup.cjs.js",
   "module": "dist/hanzilookup.esm.js",
   "browser": "dist/hanzilookup.min.js",
   "types": "index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "index.d.ts"
   ],
   "scripts": {
     "build": "rollup -c",
